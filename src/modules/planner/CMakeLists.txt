@@ -137,6 +137,15 @@ include_directories(
 #   src/${PROJECT_NAME}/planner.cpp
 # )
 
+add_library(planner_library
+  src/planner_lib.cpp
+)
+
+add_dependencies(planner_library ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(planner_library
+  ${catkin_LIBRARIES}
+)
+
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
@@ -147,6 +156,8 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 # add_executable(${PROJECT_NAME}_node src/planner_node.cpp)
 
+add_executable(core_planner src/planner_node.cpp src/planner_lib.cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -156,11 +167,16 @@ include_directories(
 ## Add cmake target dependencies of the executable
 ## same as for the library above
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+add_dependencies(core_planner ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+target_link_libraries(core_planner
+  ${catkin_LIBRARIES}
+)
 
 #############
 ## Install ##
@@ -209,3 +225,7 @@ include_directories(
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+catkin_add_gtest(planner_graph_test test/planner_graph_test.cpp src/planner_lib.cpp)
+
+target_link_libraries(planner_graph_test ${catkin_LIBRARIES})

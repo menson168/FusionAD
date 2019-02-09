@@ -14,7 +14,7 @@
 
 // Declare namespace
 using namespace std;
-using namespace fusionad::control::libraries;
+using namespace fusionad::control::library;
 
 const size_t init_array_size = 1001;
 
@@ -86,14 +86,14 @@ TEST(Path_setup_test, ShouldPass)
 TEST(WP_heading_1, ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_heading_1_object;
+  fusionad::control::library::Waypoints wp_heading_1_object;
 
-  ASSERT_TRUE(wp_heading_1_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_heading_1_object.setPath(test_reference_path));
   
   // Refer to a waypoint in the middle
   int path_index = 462-1;
 
-  float wp_heading_1_test_ans = wp_heading_1_object.GetWaypointTheta(path_index);
+  float wp_heading_1_test_ans = wp_heading_1_object.getWaypointTheta(path_index);
  
   float wp_heading_1_solution = 0.2271887;
 
@@ -106,14 +106,14 @@ TEST(WP_heading_1, ShouldPass)
 TEST(WP_heading_2, ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_heading_2_object;
+  fusionad::control::library::Waypoints wp_heading_2_object;
 
-  ASSERT_TRUE(wp_heading_2_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_heading_2_object.setPath(test_reference_path));
   
   // Refer to the last path point
-  int path_index = wp_heading_2_object.GetPathSize()-1;
+  int path_index = wp_heading_2_object.getPathSize()-1;
 
-  float wp_heading_2_test_ans = wp_heading_2_object.GetWaypointTheta(path_index);
+  float wp_heading_2_test_ans = wp_heading_2_object.getWaypointTheta(path_index);
  
   float wp_heading_2_solution = -0.0029777;
 
@@ -127,14 +127,14 @@ TEST(WP_heading_2, ShouldPass)
 TEST(WP_heading_3, ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_heading_3_object;
+  fusionad::control::library::Waypoints wp_heading_3_object;
 
-  ASSERT_TRUE(wp_heading_3_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_heading_3_object.setPath(test_reference_path));
   
   // Refer to the first path point
   int path_index = 1-1;
 
-  float wp_heading_3_test_ans = wp_heading_3_object.GetWaypointTheta(path_index);
+  float wp_heading_3_test_ans = wp_heading_3_object.getWaypointTheta(path_index);
  
   float wp_heading_3_solution = 0.6611085;
 
@@ -147,9 +147,9 @@ TEST(WP_heading_3, ShouldPass)
 TEST(WP_relative_distance_1 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_relative_distance_1_object;
+  fusionad::control::library::Waypoints wp_relative_distance_1_object;
 
-  ASSERT_TRUE(wp_relative_distance_1_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_relative_distance_1_object.setPath(test_reference_path));
 
   float vehicle_position_x = 32.435134;
   float vehicle_position_y = 85.991231;
@@ -160,7 +160,7 @@ TEST(WP_relative_distance_1 , ShouldPass)
 
   int path_index = 616-1;
 
-  float wp_relative_distance_1_test_ans = wp_relative_distance_1_object.GetWaypointRelativePlaneDistance(path_index, car_position);
+  float wp_relative_distance_1_test_ans = wp_relative_distance_1_object.getWaypointRelativePlaneDistance(path_index, car_position);
 
  
   float wp_relative_distance_1_solution = 104.4467;
@@ -174,9 +174,9 @@ TEST(WP_relative_distance_1 , ShouldPass)
 TEST(WP_relative_distance_2 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_relative_distance_2_object;
+  fusionad::control::library::Waypoints wp_relative_distance_2_object;
 
-  ASSERT_TRUE(wp_relative_distance_2_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_relative_distance_2_object.setPath(test_reference_path));
 
   float vehicle_position_x = 10.775313;
   float vehicle_position_y = 8.1294235;
@@ -187,7 +187,7 @@ TEST(WP_relative_distance_2 , ShouldPass)
 
   int path_index = 183-1;
 
-  float wp_relative_distance_2_test_ans = wp_relative_distance_2_object.GetWaypointRelativePlaneDistance(path_index, car_position);
+  float wp_relative_distance_2_test_ans = wp_relative_distance_2_object.getWaypointRelativePlaneDistance(path_index, car_position);
 
  
   float wp_relative_distance_2_solution = 21.272377;
@@ -201,9 +201,9 @@ TEST(WP_relative_distance_2 , ShouldPass)
 TEST(WP_ahead_1 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_ahead_1_object;
+  fusionad::control::library::Waypoints wp_ahead_1_object;
 
-  ASSERT_TRUE(wp_ahead_1_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_ahead_1_object.setPath(test_reference_path));
 
   float vehicle_position_x = 42.6643;
   float vehicle_position_y = 19.2537;
@@ -212,11 +212,11 @@ TEST(WP_ahead_1 , ShouldPass)
   geometry_msgs::Pose vehicle_pose;
   vehicle_pose.position.x = vehicle_position_x;
   vehicle_pose.position.y = vehicle_position_y;
-  SetROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
+  setROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
 
   int path_index = 582-1;
 
-  bool wp_ahead_1_test_ans = wp_ahead_1_object.IsWaypointAhead(path_index,vehicle_pose);
+  bool wp_ahead_1_test_ans = wp_ahead_1_object.isWaypointAhead(path_index,vehicle_pose);
 
  
   bool wp_ahead_1_solution = true;
@@ -230,9 +230,9 @@ TEST(WP_ahead_1 , ShouldPass)
 TEST(WP_ahead_2 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_ahead_2_object;
+  fusionad::control::library::Waypoints wp_ahead_2_object;
 
-  ASSERT_TRUE(wp_ahead_2_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_ahead_2_object.setPath(test_reference_path));
 
   float vehicle_position_x = 73.27834;
   float vehicle_position_y = 35.25079;
@@ -241,11 +241,11 @@ TEST(WP_ahead_2 , ShouldPass)
   geometry_msgs::Pose vehicle_pose;
   vehicle_pose.position.x = vehicle_position_x;
   vehicle_pose.position.y = vehicle_position_y;
-  SetROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
+  setROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
 
   int path_index = 87-1;
 
-  bool wp_ahead_2_test_ans = wp_ahead_2_object.IsWaypointAhead(path_index,vehicle_pose);
+  bool wp_ahead_2_test_ans = wp_ahead_2_object.isWaypointAhead(path_index,vehicle_pose);
 
  
   bool wp_ahead_2_solution = false;
@@ -259,9 +259,9 @@ TEST(WP_ahead_2 , ShouldPass)
 TEST(WP_ahead_3 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_ahead_3_object;
+  fusionad::control::library::Waypoints wp_ahead_3_object;
 
-  ASSERT_TRUE(wp_ahead_3_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_ahead_3_object.setPath(test_reference_path));
 
   float vehicle_position_x = 2.54673;
   float vehicle_position_y = 5.42523;
@@ -270,11 +270,11 @@ TEST(WP_ahead_3 , ShouldPass)
   geometry_msgs::Pose vehicle_pose;
   vehicle_pose.position.x = vehicle_position_x;
   vehicle_pose.position.y = vehicle_position_y;
-  SetROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
+  setROSQuaternionFromRPY(vehicle_pose.orientation,0,0,vehicle_theta);
 
   int path_index = 834-1;
 
-  bool wp_ahead_3_test_ans = wp_ahead_3_object.IsWaypointAhead(path_index,vehicle_pose);
+  bool wp_ahead_3_test_ans = wp_ahead_3_object.isWaypointAhead(path_index,vehicle_pose);
 
  
   bool wp_ahead_3_solution = true;
@@ -288,15 +288,15 @@ TEST(WP_ahead_3 , ShouldPass)
 TEST(WP_align_1 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_align_1_object;
+  fusionad::control::library::Waypoints wp_align_1_object;
 
-  ASSERT_TRUE(wp_align_1_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_align_1_object.setPath(test_reference_path));
 
   float vehicle_heading = 0.54973;
   int path_index = 39-1;
   float alignment_thereshold = 1.04719755;    // 60 Deg
 
-  bool wp_align_1_test_ans = wp_align_1_object.IsWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
+  bool wp_align_1_test_ans = wp_align_1_object.isWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
 
  
   bool wp_align_1_solution = true;
@@ -310,15 +310,15 @@ TEST(WP_align_1 , ShouldPass)
 TEST(WP_align_2 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_align_2_object;
+  fusionad::control::library::Waypoints wp_align_2_object;
 
-  ASSERT_TRUE(wp_align_2_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_align_2_object.setPath(test_reference_path));
 
   float vehicle_heading = 1.5633;
   int path_index = 743-1;
   float alignment_thereshold = 1.04719755;    // 60 Deg
 
-  bool wp_align_2_test_ans = wp_align_2_object.IsWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
+  bool wp_align_2_test_ans = wp_align_2_object.isWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
 
  
   bool wp_align_2_solution = false;
@@ -332,15 +332,15 @@ TEST(WP_align_2 , ShouldPass)
 TEST(WP_align_3 , ShouldPass)
 {
   // Create the test waypoint class object 
-  fusionad::control::libraries::Waypoints wp_align_3_object;
+  fusionad::control::library::Waypoints wp_align_3_object;
 
-  ASSERT_TRUE(wp_align_3_object.SetPath(test_reference_path));
+  ASSERT_TRUE(wp_align_3_object.setPath(test_reference_path));
 
   float vehicle_heading = -1.843;
   int path_index = 375-1;
   float alignment_thereshold = 1.04719755;    // 60 Deg
 
-  bool wp_align_3_test_ans = wp_align_3_object.IsWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
+  bool wp_align_3_test_ans = wp_align_3_object.isWaypointAligned(path_index,vehicle_heading,alignment_thereshold);
 
  
   bool wp_align_3_solution = false;
