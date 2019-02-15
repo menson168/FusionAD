@@ -124,7 +124,7 @@ TEST(GraphTest_AddNodeTest, ShouldPass)
   ASSERT_EQ(*node_list_iterator_pair.first+2, &third_node);
   ASSERT_EQ(*node_list_iterator_pair.first+3, &fourth_node);
   ASSERT_EQ(*node_list_iterator_pair.first+4, &fifth_node);
-}
+} 
 
 // Main function
 int main(int argc, char **argv) 
