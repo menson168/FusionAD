@@ -1,0 +1,29 @@
+## Run 1
+
+boolean CALIBRATION__MAGN_USE_EXTENDED = true;
+float magn_ellipsoid_center[3] = {373.020, 81.5437, -187.326};
+float magn_ellipsoid_transform[3][3] = {{0.955183, -0.0150762, 0.0435836}, {-0.0150762, 0.979305, 0.00251953}, {0.0435836, 0.00251953, 0.948180}};
+
+## Run 2
+
+boolean CALIBRATION__MAGN_USE_EXTENDED = true;
+float magn_ellipsoid_center[3] = {365.912, 78.2745, -189.588};
+float magn_ellipsoid_transform[3][3] = {{0.927773, -0.0216287, 0.0549769}, {-0.0216287, 0.978454, 0.00676308}, {0.0549769, 0.00676308, 0.951910}};
+
+## Run 3
+
+boolean CALIBRATION__MAGN_USE_EXTENDED = true;
+float magn_ellipsoid_center[3] = {374.196, 81.2163, -189.759};
+float magn_ellipsoid_transform[3][3] = {{0.969524, -0.0136598, 0.0295774}, {-0.0136598, 0.980790, -0.000340292}, {0.0295774, -0.000340292, 0.957168}};
+
+## Run 4
+
+boolean CALIBRATION__MAGN_USE_EXTENDED = true;
+float magn_ellipsoid_center[3] = {369.448, 78.6941, -187.360};
+float magn_ellipsoid_transform[3][3] = {{0.952848, -0.0192542, 0.0437786}, {-0.0192542, 0.976999, 0.00529770}, {0.0437786, 0.00529770, 0.948902}};
+
+## Run 5
+
+boolean CALIBRATION__MAGN_USE_EXTENDED = true;
+float magn_ellipsoid_center[3] = {360.045, 77.5365, -179.288};
+float magn_ellipsoid_transform[3][3] = {{0.918390, -0.0240112, 0.0547221}, {-0.0240112, 0.985752, 0.00866330}, {0.0547221, 0.00866330, 0.955608}};
