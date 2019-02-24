@@ -117,3 +117,16 @@ bool AStarPlanner::setGraph(Graph* Graph_ptr)
   targetSearchSpace_ptr = Graph_ptr;
   return true;
 }
+
+std::vector<Graph::Node*> AStarPlanner::searchForShortestPath(Grpah::Node* currentNode_ptr, Graph::Node* targetNode_ptr)
+{
+  if(!targetSearchSpace_ptr->isNodeListEmpty())
+  {
+    // Only do search if the current node list in the graph is not empty
+    
+  }
+  else
+  {
+    throw std::logic_error("Node list Is Empty!");
+  }
+} 

@@ -56,6 +56,8 @@ class AStarPlanner
     AStarPlanner();
     ~AStarPlanner();
     bool setGraph(Graph* Graph_ptr);
+    std::vector<Graph::Node*> searchForShortestPath(Grpah::Node* currentNode_ptr, Graph::Node* targetNode_ptr);
+
   private:
     Graph* targetSearchSpace_ptr;
 
