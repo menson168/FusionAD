@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 import rospy
-import scipy.linalg as la
-import matplotlib.pyplot as plt
-import math
-import numpy as np
-import sys
 
 from interface.msg import Controlcmd
 from nav_msgs.msg import Path
@@ -35,6 +30,7 @@ class State:
         self.v = v
 
 
+# This function updates the state of the vehicle in the simulation
 def update(state, a, delta):
 
     if delta >= max_steer:
@@ -50,12 +46,15 @@ def update(state, a, delta):
     return state
 
 
+
+# Simple Proportional Control function
 def PIDControl(target, current):
     a = Kp * (target - current)
 
     return a
 
 
+# Seems like it is just a function for wrapping the angle around -pi to pi
 def pi_2_pi(angle):
     return (angle + math.pi) % (2 * math.pi) - math.pi
 
